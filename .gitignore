@@ -1,0 +1,21 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+
+# Operating system/local machines
+.DS_Store
+Thumbs.db
+
+# Zone Identifier files
+*:[Zz]one.Identifier
+
+# VSCode configuration files
+.vscode/
+
+# env files
+*.env
