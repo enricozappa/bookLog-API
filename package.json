@@ -1,0 +1,27 @@
+{
+  "name": "booklog-api",
+  "version": "1.0.0",
+  "description": "Backend for bookLog MERN app",
+  "main": "server.ts",
+  "type": "module",
+  "scripts": {
+    "start": "node dist/server.js",
+    "dev": "nodemon --loader ts-node/esm src/server.ts",
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "author": "Enrico Zappalà",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.13.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
