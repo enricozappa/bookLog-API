@@ -36,21 +36,3 @@ export const addBook = async (req: Request, res: Response) => {
         });
     }
 };
-
-// const testBook = new Book({
-//     isbn: '978880000000',
-//     title: 'Test book 2',
-//     author: 'Pippo Pluto',
-//     imgUrl: 'https://www.google.it',
-//     progress: 0
-// });
-
-// const createTestBook = () => {
-//     testBook.save()
-//         .then(doc => {
-//             console.log(doc)
-//         })
-//         .catch(err => console.error(err));
-// }
-
-// export default createTestBook;
