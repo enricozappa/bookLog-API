@@ -8,10 +8,10 @@ const connectDB = async () => {
             throw new Error('Missing DB connection string in environment variables');
         }
 
-        await mongoose.connect(dbURI);
-        console.log('DB connected...');
+        const conn = await mongoose.connect(dbURI);
+        console.log(`✅ MongoDB connected to: ${conn.connection.name}`);
     } catch (error) {
-        console.error(`DB connection error: ${error}`);
+        console.error(`❌ DB connection error: ${error}`);
         process.exit(1);
     }
 }
