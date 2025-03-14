@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
+import { IBook } from '../types/book.types.js';
 
 const { Schema } = mongoose;
-const bookSchema = new Schema({
+const bookSchema = new Schema<IBook>({
     isbn: {
         type: String,
         required: true,
@@ -22,4 +23,4 @@ const bookSchema = new Schema({
     }
 });
 
-export const Book = mongoose.model('Book', bookSchema);
+export const Book = mongoose.model<IBook>('Book', bookSchema);

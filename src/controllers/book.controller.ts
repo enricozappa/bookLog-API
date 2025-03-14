@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import { Book } from "../models/book.model.js";
+import { IBook } from "../types/book.types.js";
 
-export const getBooks = async (req: Request, res: Response) => {
+export const getBooks = async (req: Request, res: Response): Promise<void> => {
     try {
-        const books = await Book.find();
+        const books: IBook[] = await Book.find();
 
         res.status(200).json({
             message: 'Success',
@@ -18,9 +19,9 @@ export const getBooks = async (req: Request, res: Response) => {
     }
 };
 
-export const addBook = async (req: Request, res: Response) => {
+export const addBook = async (req: Request<{}, {}, IBook>, res: Response): Promise<void> => {
     try {
-        const newBook = new Book(req.body);
+        const newBook: IBook = new Book(req.body);
 
         await newBook.save();
 

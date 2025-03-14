@@ -1,8 +1,8 @@
-import express from 'express';
+import express, { Application } from 'express';
 import morgan from 'morgan';
 import { getBooks, addBook } from './controllers/book.controller.js';
 
-const app = express();
+const app: Application = express();
 app.use(morgan('dev'));
 app.use(express.json());
 
