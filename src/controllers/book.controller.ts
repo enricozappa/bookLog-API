@@ -37,3 +37,41 @@ export const addBook = async (req: Request<{}, {}, IBook>, res: Response): Promi
         });
     }
 };
+
+export const updateBook = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { id } = req.params;
+        const data = await Book.updateOne({ _id: id }, req.body);
+
+        res.status(200).json({
+            message: 'Book updated',
+            body: req.params,
+            data: data
+        });
+    } catch (error) {
+        console.error(`Error updating book: ${error}`);
+
+        res.status(500).json({
+            message: 'Internal server error'
+        });
+    }
+}
+
+export const deleteBook = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { id } = req.params;
+        const data = await Book.deleteOne({ _id: id });
+
+        res.status(200).json({
+            message: 'Book removed',
+            body: req.params,
+            data: data
+        });
+    } catch (error) {
+        console.error(`Error creating book: ${error}`);
+
+        res.status(500).json({
+            message: 'Internal server error'
+        });
+    }
+}
