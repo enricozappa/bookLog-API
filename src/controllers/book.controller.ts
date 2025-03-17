@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
-import { Book } from "../models/book.model.js";
-import { IBook } from "../types/book.types.js";
+import { Request, Response } from 'express';
+import { Book } from '../models/book.model.js';
+import { IBook } from '../types/book.types.js';
 
 export const getBooks = async (req: Request, res: Response): Promise<void> => {
     try {
@@ -8,18 +8,21 @@ export const getBooks = async (req: Request, res: Response): Promise<void> => {
 
         res.status(200).json({
             message: 'Success',
-            books: books
+            books: books,
         });
     } catch (error) {
         console.error(`Error fetching books ${error}`);
 
         res.status(500).json({
-            message: 'Internal server error'
+            message: 'Internal server error',
         });
     }
 };
 
-export const addBook = async (req: Request<{}, {}, IBook>, res: Response): Promise<void> => {
+export const addBook = async (
+    req: Request<{}, {}, IBook>,
+    res: Response
+): Promise<void> => {
     try {
         const newBook: IBook = new Book(req.body);
 
@@ -27,18 +30,21 @@ export const addBook = async (req: Request<{}, {}, IBook>, res: Response): Promi
 
         res.status(200).json({
             message: 'Book created',
-            book: newBook
+            book: newBook,
         });
     } catch (error) {
         console.error(`Error creating book: ${error}`);
 
         res.status(500).json({
-            message: 'Internal server error'
+            message: 'Internal server error',
         });
     }
 };
 
-export const updateBook = async (req: Request, res: Response): Promise<void> => {
+export const updateBook = async (
+    req: Request<{ id: string }, {}, Partial<IBook>>,
+    res: Response
+): Promise<void> => {
     try {
         const { id } = req.params;
         const data = await Book.updateOne({ _id: id }, req.body);
@@ -46,18 +52,21 @@ export const updateBook = async (req: Request, res: Response): Promise<void> => 
         res.status(200).json({
             message: 'Book updated',
             body: req.params,
-            data: data
+            data: data,
         });
     } catch (error) {
         console.error(`Error updating book: ${error}`);
 
         res.status(500).json({
-            message: 'Internal server error'
+            message: 'Internal server error',
         });
     }
-}
+};
 
-export const deleteBook = async (req: Request, res: Response): Promise<void> => {
+export const deleteBook = async (
+    req: Request<{ id: string }>,
+    res: Response
+): Promise<void> => {
     try {
         const { id } = req.params;
         const data = await Book.deleteOne({ _id: id });
@@ -65,13 +74,13 @@ export const deleteBook = async (req: Request, res: Response): Promise<void> => 
         res.status(200).json({
             message: 'Book removed',
             body: req.params,
-            data: data
+            data: data,
         });
     } catch (error) {
-        console.error(`Error creating book: ${error}`);
+        console.error(`Error deleting book: ${error}`);
 
         res.status(500).json({
-            message: 'Internal server error'
+            message: 'Internal server error',
         });
     }
-}
+};
