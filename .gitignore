@@ -17,8 +17,5 @@ Thumbs.db
 # VSCode configuration files
 .vscode/
 
-# env files
-*.env
-
 # build files
 dist/*
