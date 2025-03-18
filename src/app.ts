@@ -6,9 +6,9 @@ const app: Application = express();
 app.use(morgan('dev'));
 app.use(express.json());
 
-app.get('/books', getBooks);
-app.post('/books', addBook);
-app.patch('/books/:id', updateBook);
-app.delete('/books/:id', deleteBook);
+app.get('/api/books', getBooks);
+app.post('/api/books', addBook);
+app.patch('/api/books/:id', updateBook);
+app.delete('/api/books/:id', deleteBook);
 
 export default app;
