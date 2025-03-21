@@ -28,7 +28,7 @@ export const addBook = async (
 
         await newBook.save();
 
-        res.status(200).json({
+        res.status(201).json({
             message: 'Book created',
             book: newBook,
         });
