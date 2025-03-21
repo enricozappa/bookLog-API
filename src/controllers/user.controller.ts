@@ -9,6 +9,7 @@ export const registerUser = async (
 ): Promise<void> => {
     try {
         const user = req.body;
+        const saltRounds = 10;
 
         // check if username or email has been taken
         const takenUsername = await User.findOne({ username: user.username });
@@ -17,7 +18,7 @@ export const registerUser = async (
         if (takenUsername || takenEmail) {
             res.json({ message: 'Username or email has already been taken' });
         } else {
-            user.password = await bcrypt.hash(req.body.password, 10);
+            user.password = await bcrypt.hash(req.body.password, saltRounds);
 
             const dbUser = new User({
                 username: user.username.trim().toLowerCase(),
