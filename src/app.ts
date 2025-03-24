@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 
 import { getBooks, addBook, updateBook, deleteBook } from './controllers/book.controller.js';
-import { registerUser } from './controllers/user.controller.js';
+import { register, login } from './controllers/user.controller.js';
 
 const app: Application = express();
 app.use(morgan('dev'));
@@ -19,6 +19,7 @@ app.post('/api/books', addBook);
 app.patch('/api/books/:id', updateBook);
 app.delete('/api/books/:id', deleteBook);
 
-app.post('/api/register', registerUser)
+app.post('/api/register', register);
+app.post('/api/login', login);
 
 export default app;
