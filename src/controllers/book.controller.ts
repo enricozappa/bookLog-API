@@ -49,6 +49,13 @@ export const updateBook = async (
         const { id } = req.params;
         const data = await Book.updateOne({ _id: id }, req.body);
 
+        if (data.modifiedCount === 0) {
+            res.status(404).json({
+               message: 'Book not found!'
+            })
+            return;
+        }
+
         res.status(200).json({
             message: 'Book updated',
             body: req.params,
@@ -70,6 +77,14 @@ export const deleteBook = async (
     try {
         const { id } = req.params;
         const data = await Book.deleteOne({ _id: id });
+
+        if (data.deletedCount === 0) {
+            res.status(404).json({
+                message: 'Book not found!'
+            });
+
+            return;
+        }
 
         res.status(200).json({
             message: 'Book removed',

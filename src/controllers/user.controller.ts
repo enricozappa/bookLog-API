@@ -56,7 +56,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
 
         if (!dbUser) {
             res.status(400).json({
-                message: 'Invalid email'
+                message: 'User not found'
             });
             return;
         }
