@@ -4,6 +4,9 @@ Backend API for my BookLog MERN stack application. This API provides endpoints f
   
 BookLog is a simple and minimalist project that allows you to keep track of your book backlog, without any overhead or unnecessary frills.
 
+## What about the UI?
+Soon I will develop a UI in React that interacts with this API
+
 ## Prerequisites
 
 - Node.js (v14 or higher)
@@ -107,7 +110,7 @@ Response:
             "title": "To Kill a Mockingbird",
             "author": "Harper Lee",
             "imgUrl": "https://example.com/mockingbird.jpg",
-            "progress": 100,
+            "progress": 0, // to read
             "createdAt": "2024-03-13T10:00:00.000Z",
             "updatedAt": "2024-03-13T10:00:00.000Z"
         },
@@ -117,7 +120,7 @@ Response:
             "title": "1984",
             "author": "George Orwell",
             "imgUrl": "https://example.com/1984.jpg",
-            "progress": 75,
+            "progress": 1, // in progress
             "createdAt": "2024-03-12T15:30:00.000Z",
             "updatedAt": "2024-03-13T09:45:00.000Z"
         }
@@ -157,7 +160,7 @@ Response:
 Request body:
 ```json
 {
-    "progress": 50
+    "progress": 2 // book completed
 }
 ```
 Response:
@@ -245,6 +248,3 @@ The API uses a consistent error response format:
   "message": "Error message description"
 }
 ```
-
-## UI
-Soon I will develop a UI in React that interacts with this API
