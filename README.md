@@ -4,6 +4,8 @@ Backend API for my BookLog MERN stack application. This API provides endpoints f
   
 BookLog is a simple and minimalist project that allows you to keep track of your book backlog, without any overhead or unnecessary frills.
 
+> **Note:** This API is hosted on Render.com's free tier. The server will sleep after 15 minutes of inactivity, causing the first request after sleep to take up to 50 seconds to respond. Subsequent requests will be normal speed.
+
 ## What about the UI?
 Soon I will develop a UI in React that interacts with this API
 
