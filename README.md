@@ -79,7 +79,6 @@ Request body:
 ```json
 {
     "username": "john_doe",
-    "email": "john.doe@example.com",
     "password": "securePassword123"
 }
 ```
@@ -88,7 +87,7 @@ Request body:
 Request body:
 ```json
 {
-    "email": "john.doe@example.com",
+    "username": "username",
     "password": "securePassword123"
 }
 ```

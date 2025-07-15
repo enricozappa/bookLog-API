@@ -12,28 +12,27 @@ export const register = async (
         const user = req.body;
         const saltRounds = 10;
 
-        // check if username or email has been taken
-        const takenUsername = await User.findOne({ username: user.username });
-        const takenEmail = await User.findOne({ email: user.email });
-
-        if (takenUsername || takenEmail) {
-            res.json({ message: 'Username or email has already been taken' });
-        } else {
-            user.password = await bcrypt.hash(req.body.password, saltRounds);
-
-            const dbUser = new User({
-                username: user.username.trim().toLowerCase(),
-                email: user.email.trim().toLowerCase(),
-                password: user.password
-            }) as IUser;
-
-            dbUser.save();
-
-            // Register user
-            res.status(201).json({
-                message: 'User created',
-            });
+        // check if an account is already existing (limit of 1 account)
+        const existingUser = await User.findOne({});
+        if (existingUser) {
+            res.status(400).json({ message: 'You can only have one account' });
+            return;
         }
+
+        // hash password
+        user.password = await bcrypt.hash(req.body.password, saltRounds);
+
+        const dbUser = new User({
+            username: user.username.trim().toLowerCase(),
+            password: user.password
+        }) as IUser;
+
+        dbUser.save();
+
+        // Register user
+        res.status(201).json({
+            message: 'User created',
+        });
     } catch (error) {
         console.error(`Error fetching books ${error}`);
 
@@ -45,18 +44,18 @@ export const register = async (
 
 export const login = async (req: Request, res: Response): Promise<void> => {
     try {
-        if (!req.body || !req.body.email || !req.body.password) {
+        if (!req.body || !req.body.username || !req.body.password) {
             res.status(400).json({
-                message: 'Email and password are required'
+                message: 'Username and password are required'
             });
             return;
         }
 
-        const dbUser = await User.findOne({ email: req.body.email });
+        const dbUser = await User.findOne({ username: req.body.username });
 
         if (!dbUser) {
             res.status(400).json({
-                message: 'User not found'
+                message: 'Username not found'
             });
             return;
         }
