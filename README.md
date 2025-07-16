@@ -1,6 +1,8 @@
 # BookLog API
 
-Backend API for my BookLog MERN stack application. This API provides endpoints for user authentication and book management.  
+Backend API for my BookLog MERN stack application. This API provides endpoints for user authentication and book management. 
+
+> ❗ **Important:** The routes are currently not protected by authentication, this feature is still under development. If you want to try this API be sure to allow MongoDB to accept requests only from your IP.  
   
 BookLog is a simple and minimalist project that allows you to keep track of your book backlog, without any overhead or unnecessary frills.
 
@@ -77,7 +79,7 @@ npm install
 > **Note:** This app is designed for practicing with the MERN stack and for personal use only. Therefore, it will not be possible to have a separate database for each user, and only one user account will be available.  
 > The conditions that enforce this limitation can be found in the `user.controller.ts` file, inside the `register` function.
 
-#### POST /api/register
+#### POST /api/register > ❗ **Important:** The database is shared. Only one user can be registered.  
 Request body:
 ```json
 {
