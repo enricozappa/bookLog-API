@@ -74,6 +74,9 @@ npm install
 
 ### Endpoint Details
 
+> **Note:** This app is designed for practicing with the MERN stack and for personal use only. Therefore, it will not be possible to have a separate database for each user, and only one user account will be available.  
+> The conditions that enforce this limitation can be found in the `user.controller.ts` file, inside the `register` function.
+
 #### POST /api/register
 Request body:
 ```json
