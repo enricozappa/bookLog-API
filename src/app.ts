@@ -5,7 +5,7 @@ import cors from 'cors';
 import { getBooks, addBook, updateBook, deleteBook } from './controllers/book.controller.js';
 import { register, login } from './controllers/user.controller.js';
 import { authenticateToken } from './middleware/auth.middleware.js';
-import { AuthenticatedRequest } from './types/auth.types.js';
+import { allowRegistrationOnlyIfNoUsers } from './middleware/register.middleware.js';
 
 const app: Application = express();
 app.use(morgan('dev'));
@@ -17,19 +17,11 @@ app.use(cors({
 }));
 
 app.get('/api/books', getBooks);
-app.post('/api/books', addBook);
-app.patch('/api/books/:id', updateBook);
-app.delete('/api/books/:id', deleteBook);
+app.post('/api/books', authenticateToken, addBook);
+app.patch('/api/books/:id', authenticateToken, updateBook);
+app.delete('/api/books/:id', authenticateToken, deleteBook);
 
-app.post('/api/register', register);
+app.post('/api/register', allowRegistrationOnlyIfNoUsers, register);
 app.post('/api/login', login);
-
-// Test route to verify JWT middleware works
-app.get('/api/test-auth', authenticateToken, (req: AuthenticatedRequest, res) => {
-    res.json({
-        message: 'Authentication successful!',
-        user: req.user
-    });
-});
 
 export default app;

@@ -12,13 +12,6 @@ export const register = async (
         const user = req.body;
         const saltRounds = 10;
 
-        // check if an account is already existing (limit of 1 account)
-        const existingUser = await User.findOne({});
-        if (existingUser) {
-            res.status(400).json({ message: 'You can only have one account' });
-            return;
-        }
-
         // hash password
         user.password = await bcrypt.hash(req.body.password, saltRounds);
 
