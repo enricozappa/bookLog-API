@@ -10,11 +10,6 @@ import { rateLimit } from 'express-rate-limit';
 
 const app: Application = express();
 
-// Trust proxy when running in production
-if (process.env.NODE_ENV === 'production') {
-    app.set('trust proxy', 1);
-}
-
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors({
