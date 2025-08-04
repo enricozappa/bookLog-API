@@ -32,6 +32,10 @@ const limiter = rateLimit({
 // Apply rate limiting to all requests
 app.use(limiter);
 
+app.get('/api/ping', (req, res) => {
+    res.send('pong');
+});
+
 app.get('/api/books', getBooks);
 app.post('/api/books', authenticateToken, addBook);
 app.patch('/api/books/:id', authenticateToken, updateBook);

@@ -71,6 +71,7 @@ npm install
 
 | Method | Endpoint       | Description         |
 |--------|----------------|---------------------|
+| GET    | /api/ping      | Ping the server     |
 | POST   | /api/register  | Register a new user |
 | POST   | /api/login     | Login user          |
 | GET    | /api/books     | Get all books       |
@@ -82,6 +83,14 @@ npm install
 
 > **Note:** This app is designed for practicing with the MERN stack and for personal use only. Therefore, it will not be possible to have a separate database for each user, and only one user account will be available.  
 > The conditions that enforce this limitation can be found in `register.middleware.ts`.
+
+#### GET /api/ping
+Response:
+```json
+{
+    "message": "pong"
+}
+```
 
 #### POST /api/register > ❗ **Important:** The database is shared. Only one user can be registered.  
 Request body:
