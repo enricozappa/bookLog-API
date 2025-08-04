@@ -9,6 +9,12 @@ BookLog is a simple and minimalist project that allows you to keep track of your
 ## What about the UI?
 Soon I will develop a UI in React that interacts with this API
 
+## Public Route
+The route to view the list of books does **not** require authentication.  
+You can access it with a `GET` request at the following URL:
+
+[https://booklog-api.onrender.com/api/books](https://booklog-api.onrender.com/api/books)
+
 ## Prerequisites
 
 - Node.js (v14 or higher)
