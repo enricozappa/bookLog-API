@@ -7,7 +7,13 @@ BookLog is a simple and minimalist project that allows you to keep track of your
 > **Note:** This API is hosted on Render.com's free tier. The server will sleep after 15 minutes of inactivity, causing the first request after sleep to take up to 50 seconds to respond. Subsequent requests will be normal speed.
 
 ## What about the UI?
-Soon I will develop a UI in React that interacts with this API
+Here's the UI repository for this API if you need more information or just see the code: https://github.com/enricozappa/bookLog-UI
+
+Here's the live demo: https://booklog-ui.netlify.app
+(It's a demo and not my real list of books)    
+You can login with the following credentials:  
+- Email: **logmein**
+- Password: **please**
 
 ## Public Route
 The route to view the list of books does **not** require authentication.  
